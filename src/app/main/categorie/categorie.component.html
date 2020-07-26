@@ -1,0 +1,9 @@
+<section id="categorie-{{categorie.id}}" class="categorie">
+    <h2 class="categorie-title">{{categorie.libelle}}</h2>
+
+    <div class="categorie-content">
+        <ul class="categorie-liste" [class]="(categorie.imageCategorie) ? 'icon-liste row' : ''">
+            <app-ligne *ngFor="let ligne of categorie.lignes" [ligne]="ligne" [class]="(categorie.imageCategorie) ? 'col-12 col-md-6 col-lg-4' : ''"></app-ligne>
+        </ul>
+    </div>
+</section>

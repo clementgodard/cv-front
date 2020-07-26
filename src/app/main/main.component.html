@@ -1,0 +1,29 @@
+<main class="col-12 offset-md-4 offset-lg-3 col-md-8 col-lg-9">
+
+    <section id="identite" class="categorie">
+        <h1 class="main-title">Développeur Web</h1>
+
+        <div class="categorie-content">
+            <div class="d-block d-md-none text-center w-100 mb-2">
+                <img id="photo-identite" src="assets/cv/profil.jpg" alt="Photo de profil" />
+            </div>
+
+            <address id="coordonnes">
+                <p>Clément GODARD</p>
+                <p>9 chemin de la porte</p>
+                <p>27180 Parville</p>
+                <p>Tél : <a href="tel:+33645379694">06-45-37-96-94</a></p>
+                <p>E-Mail : <a href="mailto:clement_godard@hotmail.fr">clement_godard@hotmail.fr</a></p>
+                <p>Né le 26 Juin 1995</p>
+                <p>
+                    <a href="https://www.linkedin.com/in/clement-godard" target="blank"><img id="logo-linked-in" src="assets/cv/logo/linkedIn.png" alt="LinkedIn" /></a>
+                    <a href="https://github.com/clementgodard" target="blank"><img id="logo-github" src="assets/cv/logo/github.png" alt="GitHub" /></a>
+                </p>
+            </address>
+        </div>
+    </section>
+
+    <app-categorie *ngFor="let categorie of categories" [categorie]="categorie"></app-categorie>
+    <!-- Faire un composant pour une categorie et faire une boucle en passant l'objet categorieCv dans le composant -->
+
+</main>

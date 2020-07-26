@@ -1,0 +1,28 @@
+<nav class="col-12 col-md-4 col-lg-3">
+    <a href="#identite" title="Mon profil" class="cache">
+        <img id="photo-identite" src="assets/cv/profil.jpg" alt="Photo de profil" />
+    </a>
+
+    <a id="menu" href="#menu" class="cache-md">
+        <img src="assets/cv/bars-solid.svg" alt="Menu" />
+        <span id="current-section" class="active">Catégorie en cours</span>
+    </a>
+    
+    <div>
+        <ul>
+            <li><a href="#identite" title="Mon profil" (click)="onClickLink($event, null)">Mon profil</a></li>
+            
+            <!--<li>
+                <a href="#competences-informatiques" title="Mes compétences informatiques" (click)="onClickLink($event)">Mes compétences informatiques</a>
+                <ul>
+                    <li><a href="#langages-informatiques" title="Mes langues informatiques" (click)="onClickLink($event)">Langages</a></li>
+                    <li><a href="#frameworks-informatiques" title="Frameworks informatiques" (click)="onClickLink($event)">Frameworks</a></li>
+                </ul>
+            </li>-->
+
+            <li *ngFor="let categorie of categories">
+                <a href="#categorie-{{categorie.id}}" [title]="categorie.libelle" (click)="onClickLink($event,categorie)">{{categorie.libelle}}</a>
+            </li>
+        </ul>
+    </div>
+</nav>

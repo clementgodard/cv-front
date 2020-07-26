@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "CVfront"
+    }
+  },
+  "defaultProject": "CVfront",
+  "cli": {
+    "analytics": "cec772e3-fc03-4cc4-a1e0-89908e7532a4"
+  }
 }

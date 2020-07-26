@@ -1,0 +1,57 @@
+@import '../../../variables.scss';
+
+li {
+    margin-bottom : $espace-items;
+    font-size: 1.5rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    & > span.date {
+        color: orange;
+        float: right;
+    }
+}
+
+li.image {
+    position: relative;
+    width : auto;
+    height: 30vh;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    padding: 0;
+
+    &:hover *{
+        opacity: 1;
+    }
+
+    * {
+        opacity: 0;
+        transition: opacity 0.5s;
+    } 
+
+    div {
+        height: 100%;
+        width: 100%;
+        background-color: $main-backround-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+        border-radius: 10px;
+    }
+
+    span.note {
+        font-size: 1.5rem;
+    }
+
+    span:last-child {
+        font-size: 4rem;
+        font-weight: 600;
+        text-align: center;
+    }
+}

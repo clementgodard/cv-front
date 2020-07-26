@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    scroll-behavior: smooth;
+}
+
+@media screen and (min-width: 768px) {
+    nav, main {
+        position: fixed !important;
+    }
+
+    .cache-md {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 767.98px) {
+    .cache {
+        display: none;    
+    }
+}
+
+.fa-star {
+    color: yellow;
+}
+
+.note {
+    margin-left: 1vw;
+    margin-right: 1vw;
+}

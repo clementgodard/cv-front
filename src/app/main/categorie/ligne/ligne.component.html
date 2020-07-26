@@ -1,0 +1,17 @@
+<li *ngIf="!ligne.image">
+    <span *ngIf="ligne.dateDebut" class="date">{{ligne.dateDebut}} - {{ligne.dateFin}}</span>
+    
+    <span *ngIf="ligne.note" class="note">
+        <fa-icon [icon]="(i < ligne.note) ? faStar : faStarEmpty" *ngFor="let i of [0,1,2,3,4]"></fa-icon>
+    </span>
+    <span>{{ligne.contenu}}</span>
+</li>
+
+<li *ngIf="ligne.image" class="image" style="background-image: url('{{ligne.image}}');">
+    <div>
+        <span *ngIf="ligne.note" class="note">
+            <fa-icon [icon]="(i < ligne.note) ? faStar : faStarEmpty" *ngFor="let i of [0,1,2,3,4]"></fa-icon>
+        </span>
+        <span>{{ligne.contenu}}</span>
+    </div>
+</li>

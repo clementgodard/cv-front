@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ApiCV: 'http://localhost/'
+  ApiCV: 'http://localhost:8080/'
 };
 
 /*

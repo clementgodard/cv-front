@@ -1,5 +1,5 @@
 <nav class="col-12 col-md-4 col-lg-3">
-    <a href="#identite" title="Mon profil" class="cache">
+    <a href="#identite" title="Mon profil" class="cache" (click)="onClickLink($event)">
         <img id="photo-identite" src="assets/cv/profil.jpg" alt="Photo de profil" />
     </a>
 
@@ -10,18 +10,18 @@
     
     <div>
         <ul>
-            <li><a href="#identite" title="Mon profil" (click)="onClickLink($event, null)">Mon profil</a></li>
-            
-            <!--<li>
-                <a href="#competences-informatiques" title="Mes compétences informatiques" (click)="onClickLink($event)">Mes compétences informatiques</a>
-                <ul>
-                    <li><a href="#langages-informatiques" title="Mes langues informatiques" (click)="onClickLink($event)">Langages</a></li>
-                    <li><a href="#frameworks-informatiques" title="Frameworks informatiques" (click)="onClickLink($event)">Frameworks</a></li>
-                </ul>
-            </li>-->
+            <li>
+                <a href="#identite" title="Mon profil" (click)="onClickLink($event)">Mon profil</a>
+            </li>
 
             <li *ngFor="let categorie of categories">
                 <a href="#categorie-{{categorie.id}}" [title]="categorie.libelle" (click)="onClickLink($event,categorie)">{{categorie.libelle}}</a>
+
+                <ul *ngIf="categorie.enfants">
+                    <li *ngFor="let enfant of categorie.enfants">
+                        <a href="#categorie-{{enfant.id}}" [title]="enfant.libelle" (click)="onClickLink($event,enfant)">{{enfant.libelle}}</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>

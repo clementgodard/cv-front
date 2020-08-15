@@ -1,17 +1,33 @@
 <li *ngIf="!ligne.image">
-    <span *ngIf="ligne.dateDebut" class="date">{{ligne.dateDebut}} - {{ligne.dateFin}}</span>
+    
+    <!-- TODO : N'afficher que l'année quand formation et sinon - aujourd'hui -->
+    <span *ngIf="ligne.dateDebut" class="date">{{ligne.dateDebut}}<span *ngIf="ligne.dateFin"> - {{ligne.dateFin}}</span></span>
     
     <span *ngIf="ligne.note" class="note">
         <fa-icon [icon]="(i < ligne.note) ? faStar : faStarEmpty" *ngFor="let i of [0,1,2,3,4]"></fa-icon>
     </span>
-    <span>{{ligne.contenu}}</span>
+    <a *ngIf="ligne.lien" [href]="ligne.lien">
+        <span>{{ligne.contenu}}</span>
+    </a>
+    <span *ngIf="!ligne.lien">{{ligne.contenu}}</span>
 </li>
 
 <li *ngIf="ligne.image" class="image" style="background-image: url('{{ligne.image}}');">
-    <div>
+    <a *ngIf="ligne.lien" [href]="ligne.lien">
+        <div>
+            <span *ngIf="ligne.note" class="note">
+                <fa-icon [icon]="(i < ligne.note) ? faStar : faStarEmpty" *ngFor="let i of [0,1,2,3,4]"></fa-icon>
+            </span>
+        
+            <span>{{ligne.contenu}}</span>
+        </div>
+    </a>
+
+    <div *ngIf="!ligne.lien">
         <span *ngIf="ligne.note" class="note">
             <fa-icon [icon]="(i < ligne.note) ? faStar : faStarEmpty" *ngFor="let i of [0,1,2,3,4]"></fa-icon>
         </span>
+    
         <span>{{ligne.contenu}}</span>
     </div>
 </li>

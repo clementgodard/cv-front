@@ -21,9 +21,19 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  onClickLink($event, categorie): void {
-    console.log($event);
-    console.log(categorie);
+  onClickLink($event, categorie?: CategorieCV): void {
+    $event.preventDefault(); // Annule l'ancre standard
+
+    let hrefVal: string;
+    if ($event.target.nodeName !== 'A') {
+      hrefVal = $event.target.parentNode.attributes.href.value;
+    } else {
+      hrefVal = $event.target.attributes.href.value;
+    }
+
+    const elemDestination = document.querySelector(hrefVal);
+
+    elemDestination.scrollIntoView({behavior: 'smooth'});
   }
 
 }

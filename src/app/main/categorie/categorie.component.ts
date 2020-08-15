@@ -11,7 +11,12 @@ export class CategorieComponent implements OnInit {
   @Input()
   public categorie: any;
 
-  constructor() { }
+  @Input()
+  public sousCategorie: boolean;
+
+  constructor() {
+    this.sousCategorie = false;
+  }
 
   ngOnInit(): void {
   }

@@ -27,11 +27,22 @@ nav {
             }
 
             > a {
-                color : inherit;
+
+                color: inherit;
 
                 &:hover {
                     color : $active-color;
                     text-decoration: underline $active-underline-color;
+                }
+
+                &.active {
+                    color : $active-color;
+                    font-weight: bold;
+                    text-decoration: underline $active-underline-color;
+                
+                    + ul .active {
+                        color : rgb(87, 146, 194);
+                    }
                 }
             }
         }
@@ -47,16 +58,6 @@ nav {
     > a[href="#identite"]:first-child {
         border-radius: 50%;
         margin-bottom: 2vh;
-    }
-}
-
-.active {
-    color : $active-color;
-    font-weight: bold;
-    text-decoration: underline $active-underline-color;
-
-    + ul .active {
-        color : rgb(87, 146, 194);
     }
 }
 

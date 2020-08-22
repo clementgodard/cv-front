@@ -11,7 +11,7 @@ main {
 
         h1.main-title {
             text-align: center;
-            margin-top : $espace-titre;
+            margin-top: 2.5rem;
         }
 
         &.categorie {
@@ -55,5 +55,8 @@ main {
 
     main section.categorie:first-child {
         padding-top: 10vh;
+    }
+    main section:first-child h1.main-title {
+        margin-top: 0px;
     }
 }

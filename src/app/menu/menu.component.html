@@ -1,4 +1,4 @@
-<nav class="col-12 col-md-4 col-lg-3">
+<nav class="col-12 col-md-4 col-lg-3" tabindex="0">
     <a href="#identite" title="Mon profil" class="cache" (click)="onClickLink($event)">
         <img id="photo-identite" src="assets/cv/profil.jpg" alt="Photo de profil" />
     </a>
@@ -15,11 +15,11 @@
             </li>
 
             <li *ngFor="let categorie of categories">
-                <a href="#categorie-{{categorie.id}}" [title]="categorie.libelle" (click)="onClickLink($event,categorie)">{{categorie.libelle}}</a>
+                <a href="#{{categorie.libelle | slug}}" [title]="categorie.libelle" (click)="onClickLink($event,categorie)">{{categorie.libelle}}</a>
 
                 <ul *ngIf="categorie.enfants">
                     <li *ngFor="let enfant of categorie.enfants">
-                        <a href="#categorie-{{enfant.id}}" [title]="enfant.libelle" (click)="onClickLink($event,enfant)">{{enfant.libelle}}</a>
+                        <a href="#{{enfant.libelle | slug}}" [title]="enfant.libelle" (click)="onClickLink($event,enfant)">{{enfant.libelle}}</a>
                     </li>
                 </ul>
             </li>

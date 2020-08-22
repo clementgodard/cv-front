@@ -1,5 +1,4 @@
 <main class="col-12 offset-md-4 offset-lg-3 col-md-8 col-lg-9">
-
     <section id="identite" class="categorie">
         <h1 class="main-title">Développeur Web</h1>
 
@@ -25,4 +24,5 @@
 
     <app-categorie *ngFor="let categorie of categories" [categorie]="categorie"></app-categorie>
 
+    <app-chargement *ngIf="chargement" style="position: relative;"></app-chargement>
 </main>

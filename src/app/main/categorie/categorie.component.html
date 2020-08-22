@@ -1,5 +1,6 @@
-<section id="categorie-{{categorie.id}}" class="categorie {{sousCategorie ? 'sous-categorie' : ''}}">
-    <h2 class="categorie-title">{{categorie.libelle}}</h2>
+<section id="{{categorie.libelle | slug}}" class="categorie {{sousCategorie ? 'sous-categorie' : ''}}">
+    <h2 *ngIf="!sousCategorie" class="categorie-title">{{categorie.libelle}}</h2>
+    <h3 *ngIf="sousCategorie" class="categorie-title">{{categorie.libelle}}</h3>
 
     <div class="categorie-content">
         <ul class="categorie-liste" [class]="(categorie.imageCategorie) ? 'icon-liste row' : ''">

@@ -2,7 +2,7 @@
 
 li {
     margin-bottom : $espace-items;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 
     span.date {
         color: orange;
@@ -17,6 +17,8 @@ li {
         position: relative;
         width : auto;
         height: 30vh;
+
+        margin-bottom : $espace-items/2;
     
         background-repeat: no-repeat;
         background-size: contain;

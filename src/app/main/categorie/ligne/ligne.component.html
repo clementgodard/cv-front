@@ -1,8 +1,12 @@
 <li *ngIf="!ligne.image">
     
-    <!-- TODO : N'afficher que l'année quand formation et sinon - aujourd'hui -->
-    <span *ngIf="ligne.dateDebut" class="date">{{ligne.dateDebut}}<span *ngIf="ligne.dateFin"> - {{ligne.dateFin}}</span></span>
-    
+    <span *ngIf="ligne.dateDebut && ligne.onlyYear" class="date">{{ligne.dateDebut | date:'yyyy'}}<span *ngIf="ligne.dateFin"> - {{ligne.dateFin | date:'yyyy'}}</span></span>
+    <span *ngIf="ligne.dateDebut && !ligne.onlyYear" class="date">{{ligne.dateDebut | date:'dd/MM/yyyy'}}
+        <span *ngIf="ligne.dateFin"> - {{ligne.dateFin | date:'dd/MM/yyyy'}}</span>
+        <span *ngIf="!ligne.dateFin"> - Aujourd'hui</span>
+    </span>
+
+
     <span *ngIf="ligne.note" class="note">
         <fa-icon [icon]="(i < ligne.note) ? faStar : faStarEmpty" *ngFor="let i of [0,1,2,3,4]"></fa-icon>
     </span>

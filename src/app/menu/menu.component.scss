@@ -9,6 +9,12 @@ nav {
     align-items: center;
     flex-direction: column;
 
+    .active {
+        color : $active-color;
+        font-weight: bold;
+        text-decoration: underline $active-underline-color;
+    }
+
     ul {
         list-style-type: none;
         padding: 0;
@@ -22,7 +28,8 @@ nav {
             }
 
             > ul {
-                padding-left : 1.5vw;
+                // padding-left : 1.5vw;
+                padding-left : 10%;
                 /* margin-bottom : 1.5vh; */
             }
 
@@ -71,7 +78,7 @@ nav {
     }
     
     nav div {
-        transition: max-height .5s;
+        transition: max-height .5s, margin-bottom .5s;
         overflow: hidden;
     }
 

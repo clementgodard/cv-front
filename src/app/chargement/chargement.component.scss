@@ -1,0 +1,50 @@
+@import '../variables.scss';
+
+div {
+    height: 100vh;
+    width: 100vw;
+
+    position: fixed;
+    top : 0%;
+    left : 0%;
+
+    z-index: 999;
+
+    background-color: white;
+    opacity: 0.9;
+
+    font-size: 8vw;
+    color: $loading-color;
+
+    div {
+        position: absolute;
+        top: 35%;
+        left: 30%;
+
+        span {
+            animation-name: chargement;
+            animation-duration: 0.5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+
+            opacity: 1;
+            text-shadow: 1px 1px 1px black, -1px 1px 1px black, 1px -1px 1px black, -1px -1px 1px black;
+        }
+
+        @for $i from 0 through 13 {
+            span:nth-child(#{$i}) {
+                animation-delay: #{0.05 * $i}s;
+            }
+        }
+    }
+}
+
+@keyframes chargement{
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.6;
+    }
+}

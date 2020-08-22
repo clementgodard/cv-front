@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CategorieComponent } from './main/categorie/categorie.component';
 import { LigneComponent } from './main/categorie/ligne/ligne.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SlugPipe } from './slug.pipe';
+import { ChargementComponent } from './chargement/chargement.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MenuComponent,
     MainComponent,
     CategorieComponent,
-    LigneComponent
+    LigneComponent,
+    SlugPipe,
+    ChargementComponent
   ],
   imports: [
     BrowserModule,

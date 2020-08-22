@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CategorieCV } from 'src/app/api.service';
 
 @Component({
   selector: 'app-categorie',

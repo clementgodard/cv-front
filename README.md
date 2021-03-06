@@ -16,7 +16,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 # Docker
 
-
 Run `docker build -t cvfront .` pour compiler l'image docker (build de angular (en mode production) + serveur apache2)
 
 Run `docker run -dit --name my-cvfront -p 80:80 cvfront` pour lancer l'image (sur le port 80 avec le nom "my-cvfront")

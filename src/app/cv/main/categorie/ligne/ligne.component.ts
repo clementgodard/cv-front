@@ -16,8 +16,6 @@ export class LigneComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    // console.log(this.ligne);
-  }
+  ngOnInit(): void { }
 
 }

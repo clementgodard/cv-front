@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ApiService } from '../../service/api.service';
 
 @Component({
   selector: 'app-menu',

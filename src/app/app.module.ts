@@ -14,6 +14,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SlugPipe } from './pipe/slug.pipe';
 import { ChargementComponent } from './chargement/chargement.component';
 import { CvComponent } from './cv/cv.component';
+import { LoginComponent } from './login/login.component';
+import { AdminComponent } from './admin/admin.component';
+import { ListeComponent } from './admin/liste/liste.component';
+import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { CvComponent } from './cv/cv.component';
     LigneComponent,
     SlugPipe,
     ChargementComponent,
-    CvComponent
+    CvComponent,
+    LoginComponent,
+    AdminComponent,
+    ListeComponent,
+    AdminMenuComponent
   ],
   imports: [
     BrowserModule,

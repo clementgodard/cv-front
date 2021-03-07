@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Categorie } from 'src/app/model/categorie';
 import { ApiService } from '../../service/api.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ApiService } from '../../service/api.service';
 export class MenuComponent implements OnInit {
 
   private apiService: ApiService;
-  public categories: any[];
+  public categories: Categorie[];
 
   constructor(apiService: ApiService) {
     this.apiService = apiService;

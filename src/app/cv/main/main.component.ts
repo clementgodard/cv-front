@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Categorie } from 'src/app/model/categorie';
 import { ApiService } from '../../service/api.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ApiService } from '../../service/api.service';
 export class MainComponent implements OnInit {
 
   private apiService: ApiService;
-  public categories: any[];
+  public categories: Categorie[];
   private timeoutId: number;
   public chargement: boolean;
 
@@ -24,7 +25,7 @@ export class MainComponent implements OnInit {
       this.chargement = false;
     });
 
-    window.onscroll = (e) => {
+    window.onscroll = () => {
       if (this.timeoutId) { clearTimeout(this.timeoutId); }
       this.timeoutId = setTimeout(this.handleScroll, 4);
     };

@@ -1,0 +1,35 @@
+<section>
+    <h2>Liste des catégories/lignes </h2>
+    <!-- Define the recursive template. -->
+    <ng-template #categorieTemplateRef let-categorie="categorie">
+        <ul>
+            <li>
+                {{ categorie.libelle }}
+                <button [categorie]="categorie" (click)="deleteCategorie(categorie)">&times;</button>
+            </li>
+
+            <ul>
+                <li *ngFor="let ligne of categorie.lignes">
+                    {{ ligne.contenu }}
+                    <button [ligne]="ligne" (click)="deleteLigne(ligne)">&times;</button>
+                </li>
+            </ul>
+
+            <ng-container *ngIf="categorie.enfants.length > 0">
+                <ng-template ngFor let-enfant [ngForOf]="categorie.enfants">
+                    <!-- Invoke the recursive template. -->
+                    <ng-template
+                        [ngTemplateOutlet]="categorieTemplateRef"
+                        [ngTemplateOutletContext]="{ categorie: enfant }">
+                    </ng-template>
+                </ng-template>
+            </ng-container>
+        </ul>
+    </ng-template>
+
+    <!-- Initiate the recursive template rendering. -->
+    <ng-template *ngFor="let categorie of categories"
+        [ngTemplateOutlet]="categorieTemplateRef"
+        [ngTemplateOutletContext]="{ categorie: categorie }">
+    </ng-template>
+</section>

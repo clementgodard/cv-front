@@ -1,48 +1,6 @@
-<h1>Administration du site</h1>
-<app-admin-menu></app-admin-menu>
-<router-outlet></router-outlet>
+<main>
+    <h1>Administration du site</h1>
+    <app-admin-menu></app-admin-menu>
+    <router-outlet></router-outlet>
+</main>
 <!-- Menu de navigation pour changer entre les différents menu (catégorie, ligne, upload image, créer des users (role = Admin)) -->
-
-<!-- <section>
-    <h2>Liste des catégories</h2>
-    <ul id="categories">
-        <ng-container *ngFor="let categorie of categories">
-            <li>
-                {{ categorie.libelle }}
-                
-                <ul *ngIf="categorie.lignes.length > 0">
-                    <li *ngFor="let ligne of categorie.lignes">
-                        {{ ligne.contenu }}
-                    </li>
-                </ul>
-            </li>
-        </ng-container>
-    </ul>
-</section> -->
-
-
-
-
-<!-- <h2>Ajouter une catégorie</h2>
-<form action="http://localhost/categorie/" method="POST" data-callback="refreshCategories">
-    <label>Libelle : <input type="text" name="libelle" placeholder="libelle" required/></label>
-    <label>Active : <input type="radio" name="active" value="on" checked /><input type="radio" name="active" value="off" /></label>
-    <label>Position : <input type="number" name="position" value="0" step="1" min="0"/></label>
-    <label>Parent : <select id="categories-parent" name="parent"><option value="">Aucun</option></select></label>
-
-    <button type="submit">Créer</button>
-</form>
-
-<h2>Ajouter une ligne</h2>
-<form action="http://localhost/ligne/" method="POST" data-callback="refreshCategories">
-    <label>Contenu : <textarea type="text" name="contenu" placeholder="contenu" required></textarea></label>
-    <label>Active : <input type="radio" name="active" value="on" checked /><input type="radio" name="active" value="off" /></label>
-    <label>Categorie : <select id="categories-parent" name="categorie"></select></label>
-    <label>Date début : <input type="date" name="dateDebut" /></label>
-    <label>Date fin : <input type="date" name="dateFin" /></label>
-    <label>Image : <input type="text" name="image" /></label>
-    <label>Url : <input type="url" name="lien" /></label>
-    <label>Note : <input name="note" type="number" step="0.5" min="0" max="5" /></label>
-
-    <button type="submit">Créer</button>
-</form> -->

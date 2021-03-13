@@ -28,17 +28,18 @@ export class ListeComponent implements OnInit {
   }
 
   public deleteCategorie(categorie: Categorie): void {
-    this.api.deleteCategorie(categorie.id).subscribe((res) => {
-      console.log(res);
-      this.refreshCategories();
-    });
+    if (confirm('Etes-vous sûr de voulez supprimé la catégorie "' + categorie.libelle + '" ?')) {
+      this.api.deleteCategorie(categorie.id).subscribe((res) => {
+        this.refreshCategories();
+      });
+    }
   }
 
   public deleteLigne(ligne: Ligne): void {
-    this.api.deleteLigne(ligne.id).subscribe((res) => {
-      console.log(res);
-      this.refreshCategories();
-    });
+    if (confirm('Etes-vous sûr de voulez supprimé la ligne "' + ligne.contenu + '" ?')) {
+      this.api.deleteLigne(ligne.id).subscribe((res) => {
+        this.refreshCategories();
+      });
+    }
   }
-
 }

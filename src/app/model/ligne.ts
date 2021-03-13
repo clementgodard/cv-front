@@ -1,3 +1,5 @@
+import { Identifiers } from '@angular/compiler';
+
 export class Ligne {
     id: number;
     contenu: string;
@@ -9,4 +11,5 @@ export class Ligne {
     lien: URL;
     image: string;
     active: boolean;
+    categorie: number;
 }

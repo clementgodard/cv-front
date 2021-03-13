@@ -18,6 +18,11 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { ListeComponent } from './admin/liste/liste.component';
 import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
+import { CategorieFormComponent } from './admin/categorie-form/categorie-form.component';
+import { LigneFormComponent } from './admin/ligne-form/ligne-form.component';
+import { FormsModule } from '@angular/forms';
+import { UtilsService } from './service/utils.service';
+
 
 @NgModule({
   declarations: [
@@ -32,16 +37,19 @@ import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
     LoginComponent,
     AdminComponent,
     ListeComponent,
-    AdminMenuComponent
+    AdminMenuComponent,
+    CategorieFormComponent,
+    LigneFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, UtilsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

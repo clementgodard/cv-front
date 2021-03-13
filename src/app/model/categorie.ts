@@ -8,4 +8,5 @@ export class Categorie {
     lignes: Ligne[];
     enfants: Categorie[];
     imageCategorie: boolean;
+    parent: Categorie;
 }

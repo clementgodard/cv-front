@@ -1,0 +1,18 @@
+<h2>Ajouter une ligne</h2>
+<form (submit)="submitLigne($event)">
+    <label>Contenu : <textarea type="text" name="contenu" placeholder="contenu" required [(ngModel)]="ligne.contenu">{{ ligne.contenu }}</textarea></label>
+    <label>Active : <input type="radio" name="active" value="true" checked [(ngModel)]="ligne.active" /><input type="radio" name="active" value="false" [(ngModel)]="ligne.active"/></label>
+    <label>Categorie : 
+        <select name="categorie" [(ngModel)]="ligne.categorie">
+            <option *ngFor="let categorie of categories" [value]="categorie.id">{{ categorie.libelle }}</option>
+        </select>
+    </label>
+    <label>Date début : <input type="date" name="dateDebut" [(ngModel)]="ligne.dateDebut" /></label>
+    <label>Date fin : <input type="date" name="dateFin" [(ngModel)]="ligne.dateFin" /></label>
+    <label>Image : <input type="text" name="image" [(ngModel)]="ligne.image" /></label>
+    <label>Url : <input type="url" name="lien" [(ngModel)]="ligne.lien" /></label>
+    <label>Note : <input name="note" type="number" step="0.5" min="0" max="5" [(ngModel)]="ligne.note" /></label>
+    <label>Seulement l'année : <input type="radio" name="onlyYear" value="true" [(ngModel)]="ligne.onlyYear" /><input type="radio" name="onlyYear" value="false" [(ngModel)]="ligne.onlyYear"/></label>
+
+    <button type="submit">Créer</button>
+</form>

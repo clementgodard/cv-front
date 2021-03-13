@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +12,11 @@ import { throwError } from 'rxjs';
 export class LoginComponent implements OnInit {
 
   private api: ApiService;
+  private router: Router;
 
-  constructor(apiService: ApiService) {
+  constructor(apiService: ApiService, router: Router) {
     this.api = apiService;
+    this.router = router;
   }
 
   ngOnInit(): void {
@@ -38,6 +41,7 @@ export class LoginComponent implements OnInit {
       ).subscribe( (res) => {
         // Si on obtient une 200 du serveur, alors c'est bon :)
         localStorage.setItem('credentials', JSON.stringify({username: username.value, password: password.value}));
+        this.router.navigate(['/admin']);
       });
     });
   }

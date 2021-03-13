@@ -9,7 +9,10 @@ export class AdminMenuComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  public logout(e: Event): void {
+    localStorage.removeItem('credentials');
   }
 
 }

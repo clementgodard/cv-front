@@ -1,0 +1,14 @@
+<h2>Ajouter une catégorie</h2>
+<form (submit)="submitCategorie($event)">
+    <label>Libelle : <input type="text" name="libelle" placeholder="libelle" required [(ngModel)]="categorie.libelle" /></label>
+    <label>Active : <input type="radio" name="active" value="true" [(ngModel)]="categorie.active" /><input type="radio" name="active" value="false" [(ngModel)]="categorie.active" /></label>
+    <label>Position : <input type="number" name="position" value="0" step="1" min="0" [(ngModel)]="categorie.position" /></label>
+    <label>Parent : 
+        <select name="parent" [(ngModel)]="categorie.parent">
+            <option *ngFor="let categorie of categories" [value]="categorie.id">{{ categorie.libelle }}</option>
+        </select>
+    </label>
+    <label>Catégorie image : <input type="radio" name="imageCategorie" value="true" [(ngModel)]="categorie.imageCategorie" /><input type="radio" name="onlimageCategorieyYear" value="false" [(ngModel)]="categorie.imageCategorie"/></label>
+
+    <button type="submit">Créer</button>
+</form>

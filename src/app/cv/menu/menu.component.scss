@@ -8,6 +8,7 @@ nav {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: fixed !important;
 
     .active {
         color : $active-color;
@@ -70,7 +71,6 @@ nav {
 
 @media screen and (max-width: 767.98px) {
     nav {
-        position: fixed !important;
         z-index: 1;
         height: initial;
         background: $nav-background-color;

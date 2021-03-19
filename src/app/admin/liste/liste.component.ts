@@ -22,7 +22,7 @@ export class ListeComponent implements OnInit {
   public ngOnInit(): void { }
 
   private refreshCategories(): void {
-    this.api.getAllCategories(false).subscribe((res) => {
+    this.api.getAllCategories(false, false).subscribe((res) => {
       this.categories = res;
     });
   }
@@ -41,5 +41,27 @@ export class ListeComponent implements OnInit {
         this.refreshCategories();
       });
     }
+  }
+
+  public toggleActiveCategorie(categorie: Categorie): void {
+    this.api.getCategorieParentId(categorie).subscribe((res) => {
+
+      if (res !== null) {
+        categorie.parent = res;
+      }
+      // On n'envoie pas afin de ne pas les modifiés
+      delete(categorie.lignes);
+
+      this.api.toggleActiveCategorie(categorie).subscribe((res2) => {
+        this.refreshCategories();
+      });
+    });
+  }
+
+  // Doesn't work
+  public toggleActiveLigne(ligne: Ligne): void {
+    this.api.toggleActiveLigne(ligne).subscribe((res) => {
+      this.refreshCategories();
+    });
   }
 }

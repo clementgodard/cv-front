@@ -11,29 +11,18 @@ export class UtilsService {
   public extractCategories(categories: Categorie[]): Categorie[] {
     const res: Categorie[] = [];
 
-    console.log(categories);
-
     for (const categorie of categories) {
       const categ = new Categorie();
       categ.id = categorie.id;
       categ.libelle = categorie.libelle;
       res.push(categ);
 
-      console.log('extraction de la catégorie : ' + categorie.libelle);
-
       const extractedCategories = this.getChildCategorie(categorie);
 
       if (extractedCategories.length > 0) {
-
-        res.push(extractedCategories);
-        for (const sousEnfant of extractedCategories) {
-          res.push(sousEnfant);
-        }
+        this.flattenArray(extractedCategories, res);
       }
     }
-
-    console.log('résultats : ');
-    console.log(res);
 
     return res;
   }
@@ -50,12 +39,27 @@ export class UtilsService {
       categ.id = enfant.id;
       categ.libelle = categorie.libelle + ' > ' + enfant.libelle;
 
+      // On inclut la catégorie enfant
       res.push(categ);
+
+      // Si la catégorie possède encore des enfants, on boucle
       if (enfant.enfants.length > 0) {
+        enfant.libelle = categ.libelle;
         res.push(this.getChildCategorie(enfant));
       }
     }
 
     return res;
+  }
+
+  private flattenArray(extractedCategories: any, res: Categorie[]): any {
+    for (const sousEnfant of extractedCategories) {
+      // Si c'est une catégorie
+      if (sousEnfant.id) {
+        res.push(sousEnfant);
+      } else {
+        this.flattenArray(sousEnfant, res);
+      }
+    }
   }
 }

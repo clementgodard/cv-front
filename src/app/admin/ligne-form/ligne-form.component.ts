@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Categorie } from 'src/app/model/categorie';
 import { Ligne } from 'src/app/model/Ligne';
 import { ApiService } from 'src/app/service/api.service';
+import { UtilsService } from 'src/app/service/utils.service';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-ligne-form',
@@ -10,16 +13,22 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class LigneFormComponent implements OnInit {
 
-  private api: ApiService;
-  public ligne: Ligne;
+  faCalendarAlt = faCalendarAlt;
 
+  private api: ApiService;
+  private util: UtilsService;
+
+  public ligne: Ligne;
   public categories: Categorie[];
 
-  public constructor(api: ApiService) {
+  public dateDebut: NgbDateStruct;
+  public dateFin: NgbDateStruct;
+
+  public constructor(api: ApiService, util: UtilsService) {
     this.api = api;
-    this.api.getAllCategories(false).subscribe((res) => {
-      this.categories = res;
-    });
+    this.util = util;
+
+    this.refreshCategories();
 
     this.ligne = new Ligne();
   }
@@ -31,6 +40,13 @@ export class LigneFormComponent implements OnInit {
 
     this.api.addLigne(this.ligne).subscribe( (res) => {
       console.log(res);
+      this.refreshCategories();
+    });
+  }
+
+  private refreshCategories(): void {
+    this.api.getAllCategories(false).subscribe((res) => {
+      this.categories = this.util.extractCategories(res);
     });
   }
 }

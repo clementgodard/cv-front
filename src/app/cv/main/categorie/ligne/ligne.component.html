@@ -8,7 +8,7 @@
 
 
     <span *ngIf="ligne.note" class="note">
-        <fa-icon [icon]="(i < ligne.note) ? faStar : faStarEmpty" *ngFor="let i of [0,1,2,3,4]"></fa-icon>
+        <fa-icon [icon]="(i < ligne.note) ? faStar : faStarEmpty" *ngFor="let i of [0,1,2,3,4]" primaryColor="yellow" secondaryColor="yellow"></fa-icon>
     </span>
     <a *ngIf="ligne.lien" [href]="ligne.lien">
         <span>{{ligne.contenu}}</span>
@@ -20,7 +20,7 @@
     <a *ngIf="ligne.lien" [href]="ligne.lien">
         <div>
             <span *ngIf="ligne.note" class="note">
-                <fa-icon [icon]="(i < ligne.note) ? faStar : faStarEmpty" *ngFor="let i of [0,1,2,3,4]"></fa-icon>
+                <fa-icon [icon]="(i < ligne.note) ? faStar : faStarEmpty" *ngFor="let i of [0,1,2,3,4]" primaryColor="yellow" secondaryColor="yellow"></fa-icon>
             </span>
         
             <span>{{ligne.contenu}}</span>
@@ -29,7 +29,7 @@
 
     <div *ngIf="!ligne.lien">
         <span *ngIf="ligne.note" class="note">
-            <fa-icon [icon]="(i < ligne.note) ? faStar : faStarEmpty" *ngFor="let i of [0,1,2,3,4]"></fa-icon>
+            <fa-icon [icon]="(i < ligne.note) ? faStar : faStarEmpty" *ngFor="let i of [0,1,2,3,4]" primaryColor="yellow" secondaryColor="yellow"></fa-icon>
         </span>
     
         <span>{{ligne.contenu}}</span>

@@ -21,12 +21,7 @@ export class CategorieFormComponent implements OnInit {
     this.util = util;
 
     this.categorie = new Categorie();
-
-    this.api.getAllCategories(false).subscribe((res) => {
-      this.categories = res;
-
-      this.categories = this.util.extractCategories(this.categories);
-    });
+    this.refreshCategories();
   }
 
   ngOnInit(): void {
@@ -37,6 +32,13 @@ export class CategorieFormComponent implements OnInit {
 
     this.api.addCategorie(this.categorie).subscribe( (res) => {
       console.log(res);
+      this.refreshCategories();
+    });
+  }
+
+  private refreshCategories(): void {
+    this.api.getAllCategories(false).subscribe((res) => {
+      this.categories = this.util.extractCategories(res);
     });
   }
 

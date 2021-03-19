@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CvComponent } from './cv/cv.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './admin/login/login.component';
 import { IsSignedInGuard } from './guard/is-signed-in.guard';
 import { AdminComponent } from './admin/admin.component';
 import { IsNotSignInGuard } from './guard/is-not-sign-in.guard';
@@ -16,7 +16,8 @@ const routes: Routes = [
     { path: 'liste', component: ListeComponent },
     { path: 'categorie', component: CategorieFormComponent },
     { path: 'ligne', component: LigneFormComponent }
-  ] }
+  ] },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

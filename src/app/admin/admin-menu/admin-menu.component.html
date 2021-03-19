@@ -1,8 +1,13 @@
-<ul>
-    <li><a routerLink="/admin">Accueil</a></li>
-    <li><a routerLink="/admin/liste">Liste</a></li>
-    <li><a routerLink="/admin/categorie">Nouvelle catégorie</a></li>
-    <li><a routerLink="/admin/ligne">Nouvelle ligne</a></li>
-    <li><a routerLink="/" target="blank">Voir CV</a></li>
-    <li><a href="#" (click)="logout($event)">Se déconnecter</a></li>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/admin" routerLinkActive="active">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/liste" routerLinkActive="active">Liste</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/categorie" routerLinkActive="active">Nouvelle catégorie</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/ligne" routerLinkActive="active">Nouvelle ligne</a></li>
+    </ul>
+
+    <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" routerLink="/" target="blank">Voir CV</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" (click)="logout($event)">Se déconnecter</a></li>
+    </ul>
+</nav>

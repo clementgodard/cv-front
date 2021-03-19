@@ -1,1 +1,19 @@
 @import '../variables.scss';
+
+.navbar-light {
+    .navbar-nav {
+        .nav-link {
+            color: $item;
+
+            &.active {
+                color: $active-item;
+                font-weight: 600;
+                text-decoration: underline;
+            }
+
+            &:hover {
+                color: darken($item, 20%);
+            }
+        }
+    }
+}

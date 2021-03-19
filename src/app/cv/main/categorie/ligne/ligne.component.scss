@@ -11,6 +11,12 @@ li {
 
     span.note {
         font-size: 1.5rem;
+        margin-left: 1vw;
+        margin-right: 1vw;
+
+        fa-icon {
+            color: yellow;
+        }
     }
 
     &.image {

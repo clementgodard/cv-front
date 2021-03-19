@@ -1,1 +1,10 @@
 @import './variables.scss';
+
+main {
+    min-height: 100vh;
+    background-color: $bg;
+
+    .titre {
+        text-align: center;
+    }
+}

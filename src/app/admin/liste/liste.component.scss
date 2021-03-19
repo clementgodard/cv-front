@@ -1,0 +1,44 @@
+@import '../variables.scss';
+
+h2 {
+    text-align: center;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &.categorie {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    &:hover {
+        background-color: lighten($bg,10%);
+    }
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+
+    .point {
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background-color: red;
+        display: inline-block;
+
+        cursor: pointer;
+
+        &.active {
+            background-color: green;
+        }
+    }
+
+    a {
+        font-size: 15pt;
+        cursor: pointer;
+    }
+}

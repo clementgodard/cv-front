@@ -19,10 +19,14 @@ export class ApiService {
     this.http = http;
   }
 
-  public getAllCategories(cache: boolean = true): Observable<Categorie[]> {
+  public getAllCategories(cache: boolean = true, onlyActive: boolean = true): Observable<Categorie[]> {
     // TODO: Fix cache problem
     if (!this.result) {
-      this.result = this.http.get<Categorie[]>(ApiService.URL + 'categorie/');
+      this.result = this.http.get<Categorie[]>(ApiService.URL + 'categorie/', {
+        params: {
+          actif: '' + onlyActive,
+        }
+      });
 
       this.result.pipe(shareReplay(1));
     }
@@ -37,9 +41,12 @@ export class ApiService {
       .set('Pragma', 'no-cache')
       .set('Expires', '0');
 
-    return this.http.get<boolean>(ApiService.URL + 'user/', { headers, params : {
-      username
-    }});
+    return this.http.get<boolean>(ApiService.URL + 'user/', {
+      headers,
+      params: {
+        username
+      }
+    });
   }
 
   public deleteCategorie(id: number): Observable<boolean> {
@@ -107,6 +114,48 @@ export class ApiService {
       }
 
       return this.http.post<boolean>(ApiService.URL + 'categorie/', formData, {headers});
+    }
+  }
+
+  public getCategorieParentId(categorie: Categorie): Observable<number> {
+    return this.http.get<number>(ApiService.URL + 'categorie/parent/' + categorie.id);
+  }
+
+  public toggleActiveCategorie(categorie: Categorie): Observable<boolean> {
+    const headers = this.getHeaders();
+    if (headers === null) {
+      return null;
+    } else {
+      const formData = new FormData();
+
+      categorie.active = !categorie.active;
+
+      for (const key in categorie) {
+        if (categorie.hasOwnProperty(key)) {
+          formData.append(key, categorie[key]);
+        }
+      }
+
+      return this.http.put<boolean>(ApiService.URL + 'categorie/', formData, {headers});
+    }
+  }
+
+  public toggleActiveLigne(ligne: Ligne): Observable<boolean> {
+    const headers = this.getHeaders();
+    if (headers === null) {
+      return null;
+    } else {
+      const formData = new FormData();
+
+      ligne.active = !ligne.active;
+
+      for (const key in ligne) {
+        if (ligne.hasOwnProperty(key)) {
+          formData.append(key, ligne[key]);
+        }
+      }
+
+      return this.http.put<boolean>(ApiService.URL + 'ligne/', formData, {headers});
     }
   }
 }

@@ -1,0 +1,13 @@
+h2 {
+    text-align: center;
+}
+
+form {
+    &>* {
+        margin-top: 1.5rem;
+    }
+
+    button[type="submit"] {
+        float: right;
+    }
+}

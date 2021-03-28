@@ -14,8 +14,14 @@ li {
         margin-left: 1vw;
         margin-right: 1vw;
 
-        fa-icon {
-            color: yellow;
+        color: red;
+
+        & > * {
+            margin-right: 0.2vw;
+
+            &:last-child {
+                margin-right: 0;
+            }
         }
     }
 
@@ -32,7 +38,7 @@ li {
     
         padding: 0;
     
-        &:hover *{
+        &:hover * {
             opacity: 1;
         }
     

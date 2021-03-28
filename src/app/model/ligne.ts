@@ -11,5 +11,5 @@ export class Ligne {
     lien: URL;
     image: string;
     active: boolean;
-    categorie: number;
+    categorie: any;
 }

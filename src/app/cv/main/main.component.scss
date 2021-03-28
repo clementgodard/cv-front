@@ -12,6 +12,7 @@ main {
         h1.main-title {
             text-align: center;
             margin-top: 2.5rem;
+            font-weight: 600;
         }
 
         &.categorie {
@@ -29,6 +30,7 @@ main {
             }
 
             address#coordonnes {
+                display: inline-block;
                 font-size: 1.2rem;
 
                 img {
@@ -38,6 +40,26 @@ main {
 
                     &:last-child {
                         margin-right : 3vw; 
+                    }
+                }
+
+                i.bi {
+                    font-size: 2rem;
+
+                    &::before {
+                        transition: transform 0.3s;
+                    }
+
+                    &#logo-linked-in {
+                        color: #007bb6;
+                    }
+
+                    &#logo-github {
+                        color: #1b1f23;
+                    }
+
+                    &:hover::before {
+                        transform: scale(1.2);
                     }
                 }
             }

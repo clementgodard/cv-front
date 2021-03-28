@@ -1,9 +1,22 @@
-<form>
-    <label for="login">Login :</label>
-    <input id="login" name="login" type="text" placeholder="login" />
+<main>
+    <div class="box">
+        <h1>Authentification</h1>
+        <form>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="bi bi-person"></i></div>
+                </div>
+                <input id="login" class="form-control" name="login" type="text" placeholder="utilisateur" />
+            </div>
 
-    <label for="password">Password :</label>
-    <input id="password" name="password" type="password" placeholder="admin" />
-
-    <input id="submit" type="submit" value="Ok" />
-</form>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="bi bi-lock"></i></div>
+                </div>
+                <input id="password" class="form-control" name="password" type="password" placeholder="mot de passe" />
+            </div>
+            
+            <button id="submit" class="btn btn-success form-control" type="submit">Se connecter</button>
+        </form>
+    </div>
+</main>

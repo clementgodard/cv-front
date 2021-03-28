@@ -33,6 +33,18 @@ export class ApiService {
     return this.result;
   }
 
+  public getCategorie(id: number): Observable<Categorie> {
+    return this.http.get<Categorie>(ApiService.URL + 'categorie/' + id);
+  }
+
+  public getLigne(id: number): Promise<Ligne> {
+    return this.http.get<Ligne>(ApiService.URL + 'ligne/' + id).toPromise();
+  }
+
+  public getCategorieByLigne(ligne: Ligne): Observable<Categorie> {
+    return this.http.get<Categorie>(ApiService.URL + 'ligne/categorie/' + ligne.id);
+  }
+
   public authenticate(username: string, password: string): Observable<boolean> {
     const headers = new HttpHeaders({
       Authorization : 'Basic ' + btoa(username + ':' + password)
@@ -83,7 +95,7 @@ export class ApiService {
     }
   }
 
-  public addLigne(ligne: Ligne): Observable<boolean> {
+  public addLigne(ligne: Ligne, image: File): Observable<boolean> {
     const headers = this.getHeaders();
     if (headers === null) {
       return null;
@@ -91,9 +103,13 @@ export class ApiService {
       const formData = new FormData();
 
       for (const key in ligne) {
-        if (ligne.hasOwnProperty(key)) {
+        if (ligne.hasOwnProperty(key) && ligne[key] !== null) {
           formData.append(key, ligne[key]);
         }
+      }
+
+      if (image !== undefined) {
+        formData.append('file', image, image.name);
       }
 
       return this.http.post<boolean>(ApiService.URL + 'ligne/', formData, {headers});
@@ -121,41 +137,71 @@ export class ApiService {
     return this.http.get<number>(ApiService.URL + 'categorie/parent/' + categorie.id);
   }
 
-  public toggleActiveCategorie(categorie: Categorie): Observable<boolean> {
+  public updateCategorie(categorie: Categorie): Observable<boolean> {
     const headers = this.getHeaders();
     if (headers === null) {
       return null;
     } else {
       const formData = new FormData();
 
-      categorie.active = !categorie.active;
-
-      for (const key in categorie) {
-        if (categorie.hasOwnProperty(key)) {
-          formData.append(key, categorie[key]);
-        }
-      }
+      this.buildFormData(formData, categorie, null);
 
       return this.http.put<boolean>(ApiService.URL + 'categorie/', formData, {headers});
     }
   }
 
-  public toggleActiveLigne(ligne: Ligne): Observable<boolean> {
+  public updateLigne(ligne: Ligne): Observable<boolean> {
     const headers = this.getHeaders();
     if (headers === null) {
       return null;
     } else {
       const formData = new FormData();
 
-      ligne.active = !ligne.active;
-
-      for (const key in ligne) {
-        if (ligne.hasOwnProperty(key)) {
-          formData.append(key, ligne[key]);
-        }
-      }
+      this.buildFormData(formData, ligne, null);
 
       return this.http.put<boolean>(ApiService.URL + 'ligne/', formData, {headers});
+    }
+  }
+
+  public patchCategorie(categorie: Categorie): Observable<boolean> {
+    const headers = this.getHeaders();
+    if (headers === null) {
+      return null;
+    } else {
+      const formData = new FormData();
+
+      this.buildFormData(formData, categorie, null);
+
+      return this.http.patch<boolean>(ApiService.URL + 'categorie/' + categorie.id, formData, {headers});
+    }
+  }
+
+  public patchLigne(ligne: Ligne, image: File): Observable<boolean> {
+    const headers = this.getHeaders();
+    if (headers === null) {
+      return null;
+    } else {
+      const formData = new FormData();
+
+      this.buildFormData(formData, ligne, null);
+
+      if (image !== undefined) {
+        formData.append('file', image, image.name);
+        console.log('file added');
+      }
+
+      return this.http.patch<boolean>(ApiService.URL + 'ligne/' + ligne.id, formData, {headers});
+    }
+  }
+
+  private buildFormData(formData: FormData, data: any, parentKey: any): any {
+    if (data && typeof data === 'object' && !(data instanceof Date) && !(data instanceof File)) {
+        Object.keys(data).forEach(key => {
+        this.buildFormData(formData, data[key], parentKey ? `${parentKey}[${key}]` : key);
+      });
+    } else {
+      const value = data == null ? '' : data;
+      formData.append(parentKey, value);
     }
   }
 }

@@ -15,7 +15,9 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [IsSignedInGuard], children: [
     { path: 'liste', component: ListeComponent },
     { path: 'categorie', component: CategorieFormComponent },
-    { path: 'ligne', component: LigneFormComponent }
+    { path: 'categorie/:id', component: CategorieFormComponent },
+    { path: 'ligne', component: LigneFormComponent },
+    { path: 'ligne/:id', component: LigneFormComponent }
   ] },
   { path: '**', redirectTo: '' }
 ];

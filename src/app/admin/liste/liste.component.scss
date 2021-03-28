@@ -23,6 +23,14 @@ li {
     display: flex;
     align-items: center;
 
+    & > * {
+        margin-right: 1vw;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
     .point {
         height: 15px;
         width: 15px;
@@ -40,5 +48,35 @@ li {
     a {
         font-size: 15pt;
         cursor: pointer;
+        color: $item;
+
+        &:hover {
+            color: darken($item, 50%);
+        }
+    }
+}
+
+
+#refresh {
+    float: right;
+
+    i {
+        display: inline-block;
+
+        &.rotating {
+            animation: tourne;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+    }
+}
+
+@keyframes tourne {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }

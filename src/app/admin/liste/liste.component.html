@@ -1,13 +1,15 @@
-<section>
-    <h2>Liste des catégories/lignes </h2>
+<section class="container">
+    <h2>Liste des catégories/lignes <button id="refresh" class="btn btn-success" (click)="refreshCategories()"><i class="bi bi-arrow-clockwise"></i></button></h2>
+    
     <!-- Define the recursive template. -->
     <ng-template #categorieTemplateRef let-categorie="categorie">
         <ul>
             <li class="categorie">
                 <span>{{ categorie.libelle }}</span>
                 <div class="actions">
-                    <div class="point" [class.active]="categorie.active" [categorie]="categorie" (click)="toggleActiveCategorie(categorie)"></div>
-                    <a [categorie]="categorie" (click)="deleteCategorie(categorie)">&times;</a>
+                    <a routerLink="/admin/categorie/{{categorie.id}}" class="update" title="Modifier cette catégorie"><i class="bi bi-pencil-square"></i></a>
+                    <div class="point" title="{{ (categorie.active) ? 'désactiver' : 'activer' }} la catégorie" [class.active]="categorie.active" [categorie]="categorie" (click)="toggleActiveCategorie(categorie)"></div>
+                    <a href="#" class="delete" [categorie]="categorie" (click)="deleteCategorie(categorie, $event)"><i class="bi bi-trash"></i></a>
                 </div>
             </li>
 
@@ -15,8 +17,9 @@
                 <li *ngFor="let ligne of categorie.lignes" class="ligne">
                     <span>{{ ligne.contenu }}</span>
                     <div class="actions">
-                        <div class="point" [class.active]="ligne.active" [ligne]="ligne" (click)="toggleActiveLigne(ligne)"></div>
-                        <a [ligne]="ligne" (click)="deleteLigne(ligne)">&times;</a>
+                        <a routerLink="/admin/ligne/{{ ligne.id }}" class="update" title="Modifier cette ligne"><i class="bi bi-pencil-square"></i></a>
+                        <div class="point" title="{{ (ligne.active) ? 'désactiver' : 'activer' }} la ligne" [class.active]="ligne.active" [ligne]="ligne" (click)="toggleActiveLigne(ligne)"></div>
+                        <a href="#" class="delete" [ligne]="ligne" (click)="deleteLigne(ligne, $event)"><i class="bi bi-trash"></i></a>
                     </div>
                 </li>
             </ul>

@@ -1,5 +1,5 @@
-<div class="container">
-    <h2>Ajouter une ligne</h2>
+<section class="container">
+    <h2>{{ ((action == 'create') ? 'Ajouter une' : 'Modifier la') }} ligne {{ idPassed }}</h2>
 
     <form (submit)="submitLigne($event)">
         <div class="form-row">
@@ -13,13 +13,15 @@
             <label class="col-sm-2 col-form-label">Active :</label>
 
             <div class="col-sm-10">
-                <div class="btn-group btn-group-toggle" ngbRadioGroup name="active" [(ngModel)]="ligne.active">
-                    <label ngbButtonLabel class="btn-primary">
-                        <input ngbButton type="radio" value="true"> On
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" name="active" type="radio" [value]="true" [(ngModel)]="ligne.active"> On
                     </label>
+                </div>
 
-                    <label ngbButtonLabel class="btn-primary">
-                        <input ngbButton type="radio" value="false"> Off
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" name="active" type="radio" [value]="false" [(ngModel)]="ligne.active"> Off
                     </label>
                 </div>
             </div>
@@ -59,6 +61,7 @@
             <label for="image" class="col-sm-2 col-form-label">Image :</label>
             <div class="col-sm-10">
                 <input id="image" class="form-control-file" type="file" name="image" [(ngModel)]="ligne.image" />
+                <img class="col-sm-6 img-fluid" [src]="ligne.image" alt="pas d'image" />
             </div>
         </div>
         
@@ -80,18 +83,20 @@
             <label class="col-sm-2 col-form-label">Seulement l'année :</label>
 
             <div class="col-sm-10">
-                <div class="btn-group btn-group-toggle" ngbRadioGroup name="onlyYear" [(ngModel)]="ligne.onlyYear">
-                    <label ngbButtonLabel class="btn-primary">
-                        <input ngbButton type="radio" value="true"> On
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" name="onlyYear" type="radio" [value]="true" [(ngModel)]="ligne.onlyYear"> On
                     </label>
+                </div>
 
-                    <label ngbButtonLabel class="btn-primary">
-                        <input ngbButton type="radio" value="false"> Off
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" name="onlyYear" type="radio" [value]="false" [(ngModel)]="ligne.onlyYear"> Off
                     </label>
                 </div>
             </div>
         </div>
 
-        <button class="btn btn-success" type="submit">Créer la ligne</button>
+        <button class="btn btn-success" type="submit">{{ ((action == 'create') ? 'Créer' : 'Modifier') }} la ligne</button>
     </form>
-</div>
+</section>

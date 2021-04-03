@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  ApiCV: 'http://api.clement-godard.fr/'
+  ApiCV: 'https://api.clement-godard.fr/'
 };

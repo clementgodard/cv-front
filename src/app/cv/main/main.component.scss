@@ -44,10 +44,17 @@ main {
                 }
 
                 i.bi {
-                    font-size: 2rem;
+                    // font-size: 2rem;
 
-                    &::before {
+                    & > svg {
+                        width: 32px;
+                        height: auto;
+
                         transition: transform 0.3s;
+
+                        &:hover {
+                            transform: scale(1.2);
+                        }
                     }
 
                     &#logo-linked-in {
@@ -56,10 +63,6 @@ main {
 
                     &#logo-github {
                         color: #1b1f23;
-                    }
-
-                    &:hover::before {
-                        transform: scale(1.2);
                     }
                 }
             }

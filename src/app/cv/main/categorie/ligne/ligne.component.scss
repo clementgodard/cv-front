@@ -10,14 +10,19 @@ li {
     }
 
     span.note {
-        font-size: 1.5rem;
+        // font-size: 1.5rem;
+        // width: 2%;
         margin-left: 1vw;
         margin-right: 1vw;
 
         color: red;
 
         & > * {
-            margin-right: 0.2vw;
+            & > svg {
+                margin-right: 0.2vw;
+                width: 24px;
+                height: auto;
+            }
 
             &:last-child {
                 margin-right: 0;
@@ -58,7 +63,7 @@ li {
         }
     
         span:last-child {
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: 600;
             text-align: center;
         }

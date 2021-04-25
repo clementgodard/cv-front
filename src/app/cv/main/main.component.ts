@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Categorie } from 'src/app/model/categorie';
 import { ApiService } from '../../service/api.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-main',
@@ -13,12 +14,19 @@ export class MainComponent implements OnInit {
   public categories: Categorie[];
   private timeoutId: number;
   public chargement: boolean;
+  private meta: Meta;
 
-  public constructor(apiService: ApiService) {
+  public constructor(apiService: ApiService, meta: Meta) {
     this.apiService = apiService;
+    this.meta = meta;
   }
 
   public ngOnInit(): void {
+    this.meta.addTag({
+      name: 'description',
+      content: 'CV de Clément Godard'
+    });
+
     this.chargement = true;
     this.apiService.getAllCategories().subscribe(value => {
       this.categories = value;

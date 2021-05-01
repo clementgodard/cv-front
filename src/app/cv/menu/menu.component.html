@@ -4,54 +4,43 @@
     </a>
 
     <a id="menu" href="#menu" class="cache-md">
-        <img src="assets/cv/bars-solid.svg" alt="Menu" />
+        <div class="menu-burger">
+            <div class="menu-burger-btn"></div>
+        </div>
         <span id="current-section" class="active">Catégorie en cours</span>
     </a>
-    
-    <!-- <div>
+
+    <div>
         <ul>
             <li>
                 <a href="#identite" title="Mon profil" (click)="onClickLink($event)">Mon profil</a>
             </li>
-
-            <li *ngFor="let categorie of categories">
-                <a href="#{{categorie.libelle | slug}}" [title]="categorie.libelle" (click)="onClickLink($event,categorie)">{{categorie.libelle}}</a>
-
-                <ul *ngIf="categorie.enfants">
-                    <li *ngFor="let enfant of categorie.enfants">
-                        <a href="#{{enfant.libelle | slug}}" [title]="enfant.libelle" (click)="onClickLink($event,enfant)">{{enfant.libelle}}</a>
-                    </li>
-                </ul>
-            </li>
         </ul>
-    </div> -->
 
-    <div>
+        <!-- Define the recursive template. -->
+        <ng-template #categorieTemplateRef let-categorie="categorie">
+            <ul>
+                <li>
+                    <a href="#{{categorie.libelle | slug}}" [title]="categorie.libelle" (click)="onClickLink($event)">{{categorie.libelle}}</a>
+                </li>
 
-    <!-- Define the recursive template. -->
-    <ng-template #categorieTemplateRef let-categorie="categorie">
-        <ul>
-            <li>
-                <a href="#{{categorie.libelle | slug}}" [title]="categorie.libelle" (click)="onClickLink($event,categorie)">{{categorie.libelle}}</a>
-            </li>
-
-            <ng-container *ngIf="categorie.enfants.length > 0">
-                <ng-template ngFor let-enfant [ngForOf]="categorie.enfants">
-                    <!-- Invoke the recursive template. -->
-                    <ng-template
-                        [ngTemplateOutlet]="categorieTemplateRef"
-                        [ngTemplateOutletContext]="{ categorie: enfant }">
+                <ng-container *ngIf="categorie.enfants.length > 0">
+                    <ng-template ngFor let-enfant [ngForOf]="categorie.enfants">
+                        <!-- Invoke the recursive template. -->
+                        <ng-template
+                            [ngTemplateOutlet]="categorieTemplateRef"
+                            [ngTemplateOutletContext]="{ categorie: enfant }">
+                        </ng-template>
                     </ng-template>
-                </ng-template>
-            </ng-container>
-        </ul>
-    </ng-template>
+                </ng-container>
+            </ul>
+        </ng-template>
 
-    <!-- Initiate the recursive template rendering. -->
-    <ng-template *ngFor="let categorie of categories"
-        [ngTemplateOutlet]="categorieTemplateRef"
-        [ngTemplateOutletContext]="{ categorie: categorie }">
-    </ng-template>
+        <!-- Initiate the recursive template rendering. -->
+        <ng-template *ngFor="let categorie of categories"
+            [ngTemplateOutlet]="categorieTemplateRef"
+            [ngTemplateOutletContext]="{ categorie: categorie }">
+        </ng-template>
 
     </div>
 </nav>

@@ -21,28 +21,20 @@ export class MenuComponent implements OnInit {
       this.categories = value;
     });
 
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth < 768) {
       const nav: HTMLElement = document.getElementsByTagName('nav')[0];
       const lienMenu: HTMLElement = document.getElementById('menu');
-
-      nav.classList.add('reduced');
 
       lienMenu.addEventListener('click', (e) => {
         e.preventDefault();
       });
 
-      // Au clic sur le menu ou un de ses enfants
-      nav.addEventListener('focusin', (e) => {
-        nav.classList.toggle('reduced');
-        nav.classList.toggle('extended');
-        this.handlePortableMenu();
-      });
-
       this.handlePortableMenu();
+      this.evalPortableMenu();
     }
   }
 
-  public onClickLink($event, categorie?): void {
+  public onClickLink($event): void {
     $event.preventDefault(); // Annule l'ancre standard
 
     let hrefVal: string;
@@ -55,16 +47,42 @@ export class MenuComponent implements OnInit {
     const elemDestination = document.querySelector(hrefVal);
 
     elemDestination.scrollIntoView({behavior: 'smooth'});
+
+    const menuBurger: HTMLDivElement = document.querySelector('.menu-burger');
+    menuBurger.click();
   }
 
   public handlePortableMenu(): void {
+
     const nav: HTMLElement = document.getElementsByTagName('nav')[0];
-    const div: HTMLElement = nav.querySelector('div');
+    const div: HTMLElement = document.querySelector('nav > div');
+    const menuBurger: HTMLElement = document.querySelector('.menu-burger');
+    const menuBurgerBtn: HTMLElement = document.querySelector('.menu-burger-btn');
+    let ouvert = false;
+
+    menuBurger.addEventListener('click', () => {
+      if (!ouvert) {
+        menuBurgerBtn.classList.add('ouvert');
+        nav.classList.add('extended');
+        ouvert = true;
+      } else {
+        menuBurgerBtn.classList.remove('ouvert');
+        nav.classList.remove('extended');
+        ouvert = false;
+      }
+
+      this.evalPortableMenu();
+    });
+  }
+
+  private evalPortableMenu(): void {
+    const nav: HTMLElement = document.getElementsByTagName('nav')[0];
+    const div: HTMLElement = document.querySelector('nav > div');
 
     if (nav.classList.contains('extended')) {
       div.style.maxHeight = div.scrollHeight + 'px';
       div.style.marginBottom = '3vh';
-    } else if (nav.classList.contains('reduced')) {
+    } else {
       div.style.maxHeight = '0px';
       div.style.marginBottom = '0px';
     }

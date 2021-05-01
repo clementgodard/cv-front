@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Categorie } from 'src/app/model/categorie';
 import { ApiService } from '../../service/api.service';
-import { Meta, Title } from '@angular/platform-browser';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-main',
@@ -60,10 +60,10 @@ export class MainComponent implements OnInit {
       }
 
       if (positionActuelle >= elementRelativePosition - marginTop &&
-         positionActuelle <= elementRelativePosition - marginTop + elemHeight) {
+         positionActuelle < elementRelativePosition - marginTop + elemHeight) {
         elem.classList.add('active');
 
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth < 768) {
           const current = document.getElementById('current-section');
           current.innerText = elem.textContent;
         }

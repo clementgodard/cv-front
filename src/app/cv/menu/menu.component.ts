@@ -21,14 +21,14 @@ export class MenuComponent implements OnInit {
       this.categories = value;
     });
 
+    const nav: HTMLElement = document.getElementsByTagName('nav')[0];
+    const lienMenu: HTMLElement = document.getElementById('menu');
+
+    lienMenu.addEventListener('click', (e) => {
+      e.preventDefault();
+    });
+
     if (window.innerWidth < 768) {
-      const nav: HTMLElement = document.getElementsByTagName('nav')[0];
-      const lienMenu: HTMLElement = document.getElementById('menu');
-
-      lienMenu.addEventListener('click', (e) => {
-        e.preventDefault();
-      });
-
       this.handlePortableMenu();
       this.evalPortableMenu();
     }

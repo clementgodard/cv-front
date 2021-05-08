@@ -5,8 +5,10 @@ li {
     font-size: 1.3rem;
 
     span.date {
-        color: orange;
+        color: $date-color;
         float: right;
+        font-weight: 700;
+        font-size: 1.1em;
     }
 
     span.note {

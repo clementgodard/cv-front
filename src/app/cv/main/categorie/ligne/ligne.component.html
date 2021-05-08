@@ -1,6 +1,6 @@
 <li *ngIf="!ligne.image">
     
-    <span *ngIf="ligne.dateDebut && ligne.onlyYear" class="date">{{ligne.dateDebut | date:'yyyy'}}<span *ngIf="ligne.dateFin"> - {{ligne.dateFin | date:'yyyy'}}</span></span>
+    <span *ngIf="ligne.dateDebut && ligne.onlyYear" class="date year-only">{{ligne.dateDebut | date:'yyyy'}}<span *ngIf="ligne.dateFin"> - {{ligne.dateFin | date:'yyyy'}}</span></span>
     <span *ngIf="ligne.dateDebut && !ligne.onlyYear" class="date">{{ligne.dateDebut | date:'dd/MM/yyyy'}}
         <span *ngIf="ligne.dateFin"> - {{ligne.dateFin | date:'dd/MM/yyyy'}}</span>
         <span *ngIf="!ligne.dateFin"> - Aujourd'hui</span>

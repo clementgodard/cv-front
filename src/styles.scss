@@ -1,5 +1,5 @@
 @import '~bootstrap/scss/bootstrap-reboot';
-@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap-grid';
 
 body {
     scroll-behavior: smooth;
@@ -15,4 +15,29 @@ body {
     .cache {
         display: none;    
     }
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+h3 {
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+h4 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+h5 {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+a {
+    color: rgb(36, 63, 211);
 }

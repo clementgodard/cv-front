@@ -27,42 +27,47 @@ main {
                 justify-content: center;
                 align-items: baseline;
                 flex-direction: column;
-            }
 
-            address#coordonnes {
-                display: inline-block;
-                font-size: 1.2rem;
-
-                img {
-                    margin-top : 2vh;
-                    width : auto;
-                    height: 2rem;
-
-                    &:last-child {
-                        margin-right : 3vw; 
-                    }
+                #menu-div-photo {
+                    width: 100%;
+                    text-align: center;
                 }
 
-                i.bi {
-                    // font-size: 2rem;
-
-                    & > svg {
-                        width: 32px;
-                        height: auto;
-
-                        transition: transform 0.3s;
-
-                        &:hover {
-                            transform: scale(1.2);
+                address#coordonnes {
+                    display: inline-block;
+                    font-size: 1.2rem;
+    
+                    img {
+                        margin-top : 2vh;
+                        width : auto;
+                        height: 2rem;
+    
+                        &:last-child {
+                            margin-right : 3vw; 
                         }
                     }
-
-                    &#logo-linked-in {
-                        color: #007bb6;
-                    }
-
-                    &#logo-github {
-                        color: #1b1f23;
+    
+                    i.bi {
+                        // font-size: 2rem;
+    
+                        & > svg {
+                            width: 32px;
+                            height: auto;
+    
+                            transition: transform 0.3s;
+    
+                            &:hover {
+                                transform: scale(1.2);
+                            }
+                        }
+    
+                        &#logo-linked-in {
+                            color: #007bb6;
+                        }
+    
+                        &#logo-github {
+                            color: #1b1f23;
+                        }
                     }
                 }
             }

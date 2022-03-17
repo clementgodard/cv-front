@@ -1,5 +1,3 @@
-import { Identifiers } from '@angular/compiler';
-
 export class Ligne {
     id: number;
     contenu: string;

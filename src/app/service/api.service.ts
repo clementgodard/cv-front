@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { shareReplay } from 'rxjs/operators';
-import { Categorie } from '../model/categorie';
-import { Ligne } from '../model/Ligne';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
+import {shareReplay} from 'rxjs/operators';
+import {Categorie} from '../model/categorie';
+import {Ligne} from '../model/ligne';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,20 @@ export class ApiService {
   public static readonly URL: string = environment.ApiCV;
   private http: HttpClient;
   private result: Observable<Categorie[]>;
+
+  private static getHeaders(): HttpHeaders {
+    const credentials = JSON.parse(localStorage.getItem('credentials'));
+
+    if (credentials === null) {
+      return null;
+    } else {
+      return new HttpHeaders()
+        .set('Authorization', 'Basic ' + btoa(credentials.username + ':' + credentials.password))
+        .set('Cache-Control', 'no-cache, no-store, must-revalidate, post-check=0, pre-check=0')
+        .set('Pragma', 'no-cache')
+        .set('Expires', '0');
+    }
+  }
 
   public constructor(http: HttpClient) {
     this.http = http;
@@ -61,7 +75,7 @@ export class ApiService {
   }
 
   public deleteCategorie(id: number): Observable<boolean> {
-    const headers = this.getHeaders();
+    const headers = ApiService.getHeaders();
     if (headers === null) {
       return null;
     } else {
@@ -70,7 +84,7 @@ export class ApiService {
   }
 
   public deleteLigne(id: number): Observable<boolean> {
-      const headers = this.getHeaders();
+      const headers = ApiService.getHeaders();
       if (headers === null) {
         return null;
       } else {
@@ -78,24 +92,8 @@ export class ApiService {
       }
   }
 
-  private getHeaders(): HttpHeaders {
-    const credentials = JSON.parse(localStorage.getItem('credentials'));
-
-    if (credentials === null) {
-      return null;
-    } else {
-      const headers = new HttpHeaders()
-        .set('Authorization', 'Basic ' + btoa(credentials.username + ':' + credentials.password))
-        .set('Cache-Control', 'no-cache, no-store, must-revalidate, post-check=0, pre-check=0')
-        .set('Pragma', 'no-cache')
-        .set('Expires', '0');
-
-      return headers;
-    }
-  }
-
   public addLigne(ligne: Ligne, image: File): Observable<boolean> {
-    const headers = this.getHeaders();
+    const headers = ApiService.getHeaders();
     if (headers === null) {
       return null;
     } else {
@@ -116,7 +114,7 @@ export class ApiService {
   }
 
   public addCategorie(categorie: Categorie): Observable<boolean> {
-    const headers = this.getHeaders();
+    const headers = ApiService.getHeaders();
     if (headers === null) {
       return null;
     } else {
@@ -137,7 +135,7 @@ export class ApiService {
   }
 
   public updateCategorie(categorie: Categorie): Observable<boolean> {
-    const headers = this.getHeaders();
+    const headers = ApiService.getHeaders();
     if (headers === null) {
       return null;
     } else {
@@ -150,7 +148,7 @@ export class ApiService {
   }
 
   public updateLigne(ligne: Ligne): Observable<boolean> {
-    const headers = this.getHeaders();
+    const headers = ApiService.getHeaders();
     if (headers === null) {
       return null;
     } else {
@@ -163,7 +161,7 @@ export class ApiService {
   }
 
   public patchCategorie(categorie: Categorie): Observable<boolean> {
-    const headers = this.getHeaders();
+    const headers = ApiService.getHeaders();
     if (headers === null) {
       return null;
     } else {
@@ -176,7 +174,7 @@ export class ApiService {
   }
 
   public patchLigne(ligne: Ligne, image: File): Observable<boolean> {
-    const headers = this.getHeaders();
+    const headers = ApiService.getHeaders();
     if (headers === null) {
       return null;
     } else {

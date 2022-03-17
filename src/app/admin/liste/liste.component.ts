@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Categorie } from 'src/app/model/categorie';
-import { Ligne } from 'src/app/model/Ligne';
+import { Ligne } from 'src/app/model/ligne';
 import { ApiService } from 'src/app/service/api.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -47,7 +47,7 @@ export class ListeComponent implements OnInit {
   public deleteCategorie(categorie: Categorie, e: Event): void {
     e.preventDefault();
     if (confirm('Etes-vous sûr de voulez supprimé la catégorie "' + categorie.libelle + '" ?')) {
-      this.api.deleteCategorie(categorie.id).subscribe((res) => {
+      this.api.deleteCategorie(categorie.id).subscribe(() => {
         this.toast.success('Catégorie "' + categorie.libelle + '" supprimée', '', {closeButton: true});
         this.refreshCategories();
       });
@@ -57,7 +57,7 @@ export class ListeComponent implements OnInit {
   public deleteLigne(ligne: Ligne, e: Event): void {
     e.preventDefault();
     if (confirm('Etes-vous sûr de voulez supprimé la ligne "' + ligne.contenu + '" ?')) {
-      this.api.deleteLigne(ligne.id).subscribe((res) => {
+      this.api.deleteLigne(ligne.id).subscribe(() => {
         this.toast.success('Ligne "' + ligne.contenu + '" supprimée', '', {closeButton: true});
         this.refreshCategories();
       });
@@ -70,7 +70,7 @@ export class ListeComponent implements OnInit {
     categ.id = categorie.id;
     categ.active = !categorie.active;
 
-    this.api.patchCategorie(categ).subscribe((res) => {
+    this.api.patchCategorie(categ).subscribe(() => {
       this.toast.success('Catégorie "' + categorie.libelle + '" ' + ((categ.active) ? 'activée' : 'désactivée'), '', {closeButton: true});
       this.refreshCategories();
     });
@@ -82,7 +82,7 @@ export class ListeComponent implements OnInit {
     lig.id = ligne.id;
     lig.active = !ligne.active;
 
-    this.api.patchLigne(lig, undefined).subscribe((res) => {
+    this.api.patchLigne(lig, undefined).subscribe(() => {
       this.toast.success('Ligne "' + ligne.contenu + '" ' + ((lig.active) ? 'activée' : 'désactivée'), '', {closeButton: true});
       this.refreshCategories();
     });

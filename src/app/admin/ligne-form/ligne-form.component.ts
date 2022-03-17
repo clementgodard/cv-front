@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Categorie } from 'src/app/model/categorie';
-import { Ligne } from 'src/app/model/Ligne';
+import { Ligne } from 'src/app/model/ligne';
 import { ApiService } from 'src/app/service/api.service';
 import { UtilsService } from 'src/app/service/utils.service';
 import { ActivatedRoute } from '@angular/router';
@@ -43,13 +43,13 @@ export class LigneFormComponent implements OnInit {
     const file: File = img.files[0];
 
     if (this.action === 'update') {
-      this.api.patchLigne(this.ligne, file).subscribe( (res) => {
+      this.api.patchLigne(this.ligne, file).subscribe( () => {
         this.toast.success('Ligne "' + this.ligne.contenu + '" créée', '', {closeButton: true});
       });
     }
 
     if (this.action === 'create') {
-      this.api.addLigne(this.ligne, file).subscribe( (res) => {
+      this.api.addLigne(this.ligne, file).subscribe( () => {
         this.toast.success('Ligne "' + this.ligne.contenu + '" mise à jour', '', {closeButton: true});
       });
     }

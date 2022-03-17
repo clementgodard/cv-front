@@ -1,4 +1,4 @@
-import { Ligne } from './Ligne';
+import { Ligne } from './ligne';
 
 export class Categorie {
     id: number;

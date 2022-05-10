@@ -14,6 +14,10 @@ export class ApiService {
   private http: HttpClient;
   private result: Observable<Categorie[]>;
 
+  public constructor(http: HttpClient) {
+    this.http = http;
+  }
+
   private static getHeaders(): HttpHeaders {
     const credentials = JSON.parse(localStorage.getItem('credentials'));
 
@@ -28,21 +32,26 @@ export class ApiService {
     }
   }
 
-  public constructor(http: HttpClient) {
-    this.http = http;
+  private static buildFormData(formData: FormData, data: any, parentKey: any): any {
+    if (data && typeof data === 'object' && !(data instanceof Date) && !(data instanceof File)) {
+        Object.keys(data).forEach(key => {
+        this.buildFormData(formData, data[key], parentKey ? `${parentKey}[${key}]` : key);
+      });
+    } else {
+      const value = data == null ? '' : data;
+      formData.append(parentKey, value);
+    }
   }
 
   public getAllCategories(cache: boolean = true, onlyActive: boolean = true): Observable<Categorie[]> {
-    // TODO: Fix cache problem
-    if (!this.result) {
+    if (!this.result || !cache) {
       this.result = this.http.get<Categorie[]>(ApiService.URL + 'categorie/', {
         params: {
           actif: '' + onlyActive,
         }
-      });
-
-      this.result.pipe(shareReplay(1));
+      }).pipe(shareReplay(1));
     }
+
     return this.result;
   }
 
@@ -141,7 +150,7 @@ export class ApiService {
     } else {
       const formData = new FormData();
 
-      this.buildFormData(formData, categorie, null);
+      ApiService.buildFormData(formData, categorie, null);
 
       return this.http.put<boolean>(ApiService.URL + 'categorie/', formData, {headers});
     }
@@ -154,7 +163,7 @@ export class ApiService {
     } else {
       const formData = new FormData();
 
-      this.buildFormData(formData, ligne, null);
+      ApiService.buildFormData(formData, ligne, null);
 
       return this.http.put<boolean>(ApiService.URL + 'ligne/', formData, {headers});
     }
@@ -167,7 +176,7 @@ export class ApiService {
     } else {
       const formData = new FormData();
 
-      this.buildFormData(formData, categorie, null);
+      ApiService.buildFormData(formData, categorie, null);
 
       return this.http.patch<boolean>(ApiService.URL + 'categorie/' + categorie.id, formData, {headers});
     }
@@ -180,7 +189,7 @@ export class ApiService {
     } else {
       const formData = new FormData();
 
-      this.buildFormData(formData, ligne, null);
+      ApiService.buildFormData(formData, ligne, null);
 
       if (image !== undefined) {
         formData.append('file', image, image.name);
@@ -188,17 +197,6 @@ export class ApiService {
       }
 
       return this.http.patch<boolean>(ApiService.URL + 'ligne/' + ligne.id, formData, {headers});
-    }
-  }
-
-  private buildFormData(formData: FormData, data: any, parentKey: any): any {
-    if (data && typeof data === 'object' && !(data instanceof Date) && !(data instanceof File)) {
-        Object.keys(data).forEach(key => {
-        this.buildFormData(formData, data[key], parentKey ? `${parentKey}[${key}]` : key);
-      });
-    } else {
-      const value = data == null ? '' : data;
-      formData.append(parentKey, value);
     }
   }
 }

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // ApiCV: 'http://api-dev.clement-godard.fr/'
-  ApiCV: 'http://localhost/'
+  ApiCV: 'https://api.clement-godard.fr/',
+  // ApiCV: 'http://localhost/'
 };
 
 /*

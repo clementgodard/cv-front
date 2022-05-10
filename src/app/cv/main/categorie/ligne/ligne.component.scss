@@ -37,23 +37,23 @@ li {
         width : auto;
         height: 30vh;
 
-        margin-bottom : $espace-items/2;
-    
+        margin-bottom : calc(#{$espace-items} / 2);
+
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-    
+
         padding: 0;
-    
+
         &:hover * {
             opacity: 1;
         }
-    
+
         * {
             opacity: 0;
             transition: opacity 0.5s;
-        } 
-    
+        }
+
         div {
             height: 100%;
             width: 100%;
@@ -63,7 +63,7 @@ li {
             align-items: center;
             flex-direction: column-reverse;
         }
-    
+
         span:last-child {
             font-size: 2rem;
             font-weight: 600;

@@ -49,24 +49,24 @@
                 <input id="dateDebut" class="form-control" type="date" name="dateDebut" [(ngModel)]="ligne.dateDebut" />
             </div>
         </div>
-        
+
         <div class="form-row">
             <label for="dateFin" class="col-sm-2 col-form-label">Date fin :</label>
             <div class="col-sm-10">
                 <input id="dateFin" class="form-control" type="date" name="dateFin" [(ngModel)]="ligne.dateFin" />
             </div>
         </div>
-        
+
         <div class="form-row">
             <label for="image" class="col-sm-2 col-form-label">Image :</label>
             <div class="col-sm-10">
                 <input id="image" class="form-control-file" type="file" name="image" [(ngModel)]="ligne.image" />
-                <img class="col-sm-6 img-fluid" [src]="ligne.image" alt="pas d'image" />
+                <img class="col-sm-6 img-fluid" loading="lazy" [src]="ligne.image" alt="pas d'image" />
             </div>
         </div>
-        
+
         <div class="form-row">
-            <label id="url" class="col-sm-2 col-form-label">Url :</label>
+            <label for="url" class="col-sm-2 col-form-label">Url :</label>
             <div class="col-sm-10">
                 <input id="url" class="form-control" type="url" name="lien" [(ngModel)]="ligne.lien" />
             </div>

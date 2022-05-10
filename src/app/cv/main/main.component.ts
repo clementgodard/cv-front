@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Categorie } from 'src/app/model/categorie';
 import { ApiService } from '../../service/api.service';
 import { Meta } from '@angular/platform-browser';
